@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import * as S from "./style";
 import Link from "next/link";
 import Image from "next/image";
+
 const Header: NextPage = () => {
   return (
     <S.HeaderBox>
