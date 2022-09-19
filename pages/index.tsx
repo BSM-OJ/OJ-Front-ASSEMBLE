@@ -4,7 +4,7 @@ import ProblemLevel from "./problemlist/problemLevel";
 //npm install react-icons --save
 //yarn add react-icons
 
-const Home = () => {
+const Home: NextPage = () => {
   return (
     <S.Container>
       <S.Title>문제목록</S.Title>
@@ -16,6 +16,11 @@ const Home = () => {
             star={"star"}
             complete={"complete"}
           />
+        );
+      })}
+      {["1", "2", "3", "4", "5"].map((data, idx) => {
+        return (
+          <ProblemLevel key={idx} level={data} star={"star"} complete={""} />
         );
       })}
     </S.Container>

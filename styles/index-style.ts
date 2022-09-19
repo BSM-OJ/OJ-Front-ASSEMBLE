@@ -27,6 +27,7 @@ export const Container = styled.div`
 
 export const Problem = styled.div`
   width: 20vw;
+  margin: 10px;
   padding: 16px;
   box-sizing: border-box;
   height: 13vh;
