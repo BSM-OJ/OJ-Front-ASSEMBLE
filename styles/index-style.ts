@@ -3,13 +3,15 @@ import theme from "./theme";
 
 export const Title = styled.h3`
   color: white;
-  font-size: 3.4vh;
+  font-size: 30px;
   font-weight: 400;
 `;
 
 export const ProblemContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 export const Level = styled.div`
@@ -18,7 +20,6 @@ export const Level = styled.div`
   height: 3.2vh;
   color: white;
   font-size: 14px;
-
   text-align: center;
   border-radius: 3.2vh;
   line-height: 3.2vh;
@@ -33,20 +34,19 @@ export const Container = styled.div`
 `;
 
 export const Problem = styled.div`
-  min-width: 200px;
+  min-width: 190px;
   margin: 10px;
   padding: 16px;
   box-sizing: border-box;
   height: 13vh;
   background-color: #333333;
   border: 2px solid white;
-  border-radius: 2vh;
+  border-radius: 20px;
 `;
 
 export const CompleteButton = styled.div`
-  width: 4vw;
-  min-width: 50px;
-  height: 3vh;
+  width: 3vw;
+  min-width: 40px;
   background-color: #7494ab;
   border-radius: 8px;
   line-height: 3vh;
