@@ -5,19 +5,17 @@ import Link from "next/link";
 import Image from "next/image";
 
 const Header: NextPage = () => {
+  const [isOpen, setIsOpen] = React.useState(true);
+  React.useEffect(() => {
+    console.log(isOpen);
+  }, [isOpen]);
   return (
     <S.HeaderBox>
       <S.Logo alt="logo" src="/images/logo.png" />
       <S.Nav>
-        <Link href="/hold">
-          대회개최
-        </Link>
-        <Link href="/list">
-          대회목록
-        </Link>
-        <Link href="/">
-          문제목록
-        </Link>
+        <S.Nav_item href="/hold">대회개최</S.Nav_item>
+        <S.Nav_item href="/list">대회목록</S.Nav_item>
+        <S.Nav_item href="/">문제목록</S.Nav_item>
       </S.Nav>
       <S.Search />
       <div
@@ -35,6 +33,7 @@ const Header: NextPage = () => {
         />
         유나은님
       </div>
+      
     </S.HeaderBox>
   );
 };

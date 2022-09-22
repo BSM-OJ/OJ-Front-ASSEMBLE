@@ -9,8 +9,8 @@ export const Title = styled.h3`
 
 export const Level = styled.div`
   width: 4vw;
+  min-width: 50px;
   height: 3.2vh;
-
   color: white;
   font-size: 2vh;
   text-align: center;
@@ -26,7 +26,8 @@ export const Container = styled.div`
 `;
 
 export const Problem = styled.div`
-  width: 20vw;
+  width: 25%;
+  min-width: 200px;
   margin: 10px;
   padding: 16px;
   box-sizing: border-box;
@@ -38,6 +39,7 @@ export const Problem = styled.div`
 
 export const CompleteButton = styled.div`
   width: 4vw;
+  min-width: 50px;
   height: 3vh;
   background-color: #7494ab;
   border-radius: 8px;
