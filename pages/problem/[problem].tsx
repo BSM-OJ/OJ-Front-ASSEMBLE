@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import Code from "./Code";
 import Link from "next/link";
 import Head from "next/head";
