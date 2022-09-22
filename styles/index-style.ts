@@ -8,6 +8,8 @@ export const Title = styled.h3`
 `;
 
 export const ProblemContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 `;
 
 export const Level = styled.div`
@@ -31,7 +33,6 @@ export const Container = styled.div`
 `;
 
 export const Problem = styled.div`
-  width: 25%;
   min-width: 200px;
   margin: 10px;
   padding: 16px;
