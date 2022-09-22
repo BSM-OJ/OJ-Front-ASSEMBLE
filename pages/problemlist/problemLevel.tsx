@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
 import * as S from "../../styles/index-style";
-
-const ProblemLevel = (props: {
+interface PageProps {
   level: string;
   complete: string;
   star: string;
-}) => {
+}
+const ProblemLevel = (props: PageProps) => {
   return (
     <S.Problem>
       <S.Level
