@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Header_Wrapper = styled.header`
   width: 100%;
-  height: 70px;
+  height: auto;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;

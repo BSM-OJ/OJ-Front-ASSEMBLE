@@ -8,21 +8,23 @@ const Home: NextPage = () => {
   return (
     <S.Container>
       <S.Title>문제목록</S.Title>
-      {["1", "2", "3", "4", "5"].map((data, idx) => {
-        return (
-          <ProblemLevel
-            key={idx}
-            level={data}
-            star={"star"}
-            complete={"complete"}
-          />
-        );
-      })}
-      {["1", "2", "3", "4", "5"].map((data, idx) => {
-        return (
-          <ProblemLevel key={idx} level={data} star={"star"} complete={""} />
-        );
-      })}
+      <S.ProblemContainer>
+        {["1", "2", "3", "4", "5"].map((data, idx) => {
+          return (
+            <ProblemLevel
+              key={idx}
+              level={data}
+              star={"star"}
+              complete={"complete"}
+            />
+          );
+        })}
+        {["1", "2", "3", "4", "5"].map((data, idx) => {
+          return (
+            <ProblemLevel key={idx} level={data} star={"star"} complete={""} />
+          );
+        })}
+      </S.ProblemContainer>
     </S.Container>
   );
 };
