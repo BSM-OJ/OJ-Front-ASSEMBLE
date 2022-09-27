@@ -50,14 +50,11 @@ export const Header_Wrapper = styled.header`
     display: block;
   }
   .search_contanier {
-    width: 55%;
+    width: 70%;
     display: flex;
   }
   .search {
-    width: 80%;
     height: 30px;
-    padding: 10px;
-    box-sizing: border-box;
     border: 1px solid whitesmoke;
     background-color: #333333;
     border-radius: 10px;
@@ -100,7 +97,7 @@ export const Header_Wrapper = styled.header`
       display: flex;
       justify-content: space-around;
       align-items: center;
-      width: 65%;
+      width: 60%;
     }
     .search {
       width: 60%;
