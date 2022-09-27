@@ -2,14 +2,13 @@ import React from "react";
 import Head from "next/head";
 import type { NextPage } from "next";
 import * as S from "../../styles/login/style";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { LOGIN_URL } from "../../constant/url";
 import { useRouter } from "next/router";
 
 const Login: NextPage = () => {
   let [email, setEmail] = React.useState<string>("");
   let [password, setPassword] = React.useState<string>("");
-  let [auth, setAuth] = React.useState<string>("");
 
   const router = useRouter();
 
@@ -22,7 +21,6 @@ const Login: NextPage = () => {
     let config = {
       method: "post",
       url: LOGIN_URL,
-
       headers: {},
       data: data,
       withCredentials: true,
@@ -34,7 +32,7 @@ const Login: NextPage = () => {
         router.push("/");
       })
       .catch(function (error) {
-        console.log(error);
+        alert(error.response.data.message);
       });
 
     // axios

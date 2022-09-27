@@ -26,19 +26,13 @@ const Home: NextPage = () => {
     <S.Container>
       <S.Title>문제목록</S.Title>
       <S.ProblemContainer>
-        {new Array(9).fill(0).map((_, __) =>
-          ["1", "2", "3", "4", "5"].map((data, idx) => {
-            return (
-              <ProblemLevel
-                problemName={"안녕하십니까"}
-                key={idx}
-                level={data}
-                star={"star"}
-                complete={"complete"}
-              />
-            );
-          })
-        )}
+        <ProblemLevel
+          problemName={"안녕하십니까"}
+          key={"1"}
+          level={"1"}
+          star={"star"}
+          complete={"complete"}
+        />
       </S.ProblemContainer>
     </S.Container>
   );

@@ -35,7 +35,9 @@ const Signup: NextPage = () => {
       })
       .catch(function (error) {
         console.log(error);
-        console.log(error.message);
+        if (error.response.status === 400) {
+          alert("계정 조건이 잘못되었습니다.");
+        }
       });
   };
 
