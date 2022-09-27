@@ -22,6 +22,7 @@ const Login: NextPage = () => {
     let config = {
       method: "post",
       url: LOGIN_URL,
+
       headers: {},
       data: data,
       withCredentials: true,
@@ -35,6 +36,15 @@ const Login: NextPage = () => {
       .catch(function (error) {
         console.log(error);
       });
+
+    // axios
+    //   .post(`http://localhost:3000/api/user/cookie`, {
+    //     withCredentials: true,
+    //   })
+    //   .then((response) => {
+    //     console.log(response);
+    //     console.log(response.data);
+    //   });
   };
 
   return (

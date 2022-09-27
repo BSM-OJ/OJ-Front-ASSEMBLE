@@ -11,6 +11,7 @@ const Home: NextPage = () => {
     method: "get",
     url: `${GET_USER_INFO_URL}`,
     headers: {},
+    withCredentials: true,
   };
 
   axios(config)
