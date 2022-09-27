@@ -24,9 +24,12 @@ export const LoginInput = styled.input`
   margin: 10px 0;
   padding: 20px 20px;
   border-radius: 8px;
-  border: 1px solid ${color.main};
+  border: 0;
   &::placeholder {
     font-size: 16px;
+  }
+  &:focus {
+    outline: none;
   }
 `;
 

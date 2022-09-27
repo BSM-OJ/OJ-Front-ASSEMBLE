@@ -4,7 +4,6 @@ import type { NextPage } from "next";
 import * as S from "../../styles/login/style";
 import axios from "axios";
 import { LOGIN_URL } from "../../constant/url";
-import useStore from "../../context/useStore";
 import { useRouter } from "next/router";
 
 const Login: NextPage = () => {
@@ -15,36 +14,26 @@ const Login: NextPage = () => {
   const router = useRouter();
 
   const submit = () => {
-    // let data = {
-    //   email: email,
-    //   password: password,
-    // };
+    let data = {
+      email: email,
+      password: password,
+    };
 
-    // let config = {
-    //   method: "post",
-    //   // url: LOGIN_URL,
-    //   url: "http://43.201.36.11:3000/api/user/cookie",
-    //   headers: {},
-    //   // data: data,
-    //   withCredentials: true,
-    // };
+    let config = {
+      method: "post",
+      url: LOGIN_URL,
+      headers: {},
+      data: data,
+      withCredentials: true,
+    };
 
-    // axios(config)
-    //   .then(function (response) {
-    //     console.log(response.data);
-    //     router.push("/");
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-
-    axios
-      .post(`http://localhost:3000/api/user/cookie`, {
-        withCredentials: true,
-      })
-      .then((response) => {
-        console.log(response);
+    axios(config)
+      .then(function (response) {
         console.log(response.data);
+        router.push("/");
+      })
+      .catch(function (error) {
+        console.log(error);
       });
   };
 
