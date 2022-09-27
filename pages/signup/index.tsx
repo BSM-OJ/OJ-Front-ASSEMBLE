@@ -27,14 +27,15 @@ const Signup: NextPage = () => {
       headers: {},
       data: data,
     };
+    console.log(nickname, email, password);
     axios(config)
       .then(function (response) {
-        console.log(response.data);
-        alert("전송 완료, 이메일을 확인해주세요");
+        alert("가입이 완료되었습니다.");
         router.push("/");
       })
       .catch(function (error) {
         console.log(error);
+        console.log(error.message);
       });
   };
 
@@ -64,7 +65,7 @@ const Signup: NextPage = () => {
                 </S.LoginLabel>
                 <S.LoginInput
                   type="email"
-                  placeholder="이메일을 입력해주세요"
+                  placeholder="이메일을 입력해주세요."
                   id="username"
                   autoComplete="on"
                   onChange={(e: any) => {
@@ -80,7 +81,7 @@ const Signup: NextPage = () => {
             </S.LoginLabel>
             <S.LoginInput
               type="password"
-              placeholder="비밀번호를 입력해주세요."
+              placeholder="비밀번호를 입력해주세요. (8~30자)"
               id="password"
               autoComplete="on"
               onChange={(e: any) => {

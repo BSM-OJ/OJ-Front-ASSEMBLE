@@ -14,7 +14,7 @@ const ContestList: NextPage = () => {
         return (
           <S.contest_container key={idx}>
             <div>{data[0]}</div>
-            <div> {data[1]} </div>
+            <div>{data[1]}</div>
             <S.contest_join_button
               onClick={() => {
                 console.log("암");
