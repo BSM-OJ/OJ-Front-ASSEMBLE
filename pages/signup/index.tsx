@@ -13,15 +13,7 @@ const Signup: NextPage = () => {
   const [password, setPassword] = React.useState("");
   const [nickname, setNickname] = React.useState("");
 
-  const [auth, setAuth] = React.useState("");
   const router: NextRouter = useRouter();
-
-  React.useEffect(() => {
-    if (email != null) {
-      setAuth(email.substr(9, 23));
-      console.log(auth);
-    }
-  }, [auth, email]);
 
   const submit = () => {
     let data = {

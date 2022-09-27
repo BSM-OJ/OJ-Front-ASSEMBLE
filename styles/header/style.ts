@@ -47,14 +47,14 @@ export const Header_Wrapper = styled.header`
   }
 
   .user {
-    display: block;
+    display: flex;
+    justify-content: space-between;
   }
   .search_contanier {
     width: 70%;
     display: flex;
   }
   .search {
-    height: 30px;
     border: 1px solid whitesmoke;
     background-color: #333333;
     border-radius: 10px;

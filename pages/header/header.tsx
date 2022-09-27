@@ -56,7 +56,7 @@ const Header: NextPage = () => {
               setUserToggled(!userToggled);
             }}
           >
-            <FontAwesomeIcon icon={faUser} />
+            <FontAwesomeIcon icon={faUser} style={{ height: "30px" }} />
             <span> 유나은님</span>
           </div>
         </div>

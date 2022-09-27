@@ -43,20 +43,24 @@ const Problem: NextPage = () => {
   } = useStore();
 
   function getProblemData(pid: string) {
-    axios
-      .post(`${VIEW_PROBLEM_INFO_URL}/${pid}`, {
-        send_code: nowCode,
-      })
-      .then((response: any) => {
+    let config = {
+      method: "get",
+      url: `${VIEW_PROBLEM_INFO_URL}/13`,
+      headers: {},
+    };
+    console.log(`${VIEW_PROBLEM_INFO_URL}/13`);
+
+    axios(config)
+      .then(function (response) {
         console.log(response.data);
       })
-      .catch((error: any) => {
+      .catch(function (error) {
         console.log(error);
-        console.log(`${VIEW_PROBLEM_INFO_URL}/${pid}`);
       });
   }
 
   getProblemData(nowProblemNumber);
+  console.log(nowProblemNumber);
 
   const pid: Pid = route.problem; // 문제 번호
   React.useEffect(() => {
