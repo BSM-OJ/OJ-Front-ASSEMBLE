@@ -1,10 +1,15 @@
 import React from "react";
 import type { NextPage } from "next";
-import * as S from "./style";
+import * as S from "../../styles/header/style";
 import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faUser, faTimes } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faUser,
+  faTimes,
+  faMagnifyingGlass,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Header: NextPage = () => {
   const [isToggled, setIsToggled] = React.useState(false);
@@ -21,13 +26,23 @@ const Header: NextPage = () => {
         />
       </div>
       <ul className="header__menulist">
-        <li>문제목록</li>
-        <li>대회목록</li>
-        <li>대회개최</li>
+        <Link href="/">
+          <li>문제목록</li>
+        </Link>
+        <Link href="/contest/list">
+          <li>대회목록</li>
+        </Link>
+        <Link href="/">
+          <li>대회개최</li>
+        </Link>
       </ul>
       <div className="info_wrapper">
-        <input className="search" />
-
+        <div className="search_contanier">
+          <input className="search" />
+          <button className="search_btn" style={{ marginLeft: "10px" }}>
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </button>
+        </div>
         <div
           style={{
             display: "flex",
@@ -41,7 +56,7 @@ const Header: NextPage = () => {
               setUserToggled(!userToggled);
             }}
           >
-            <FontAwesomeIcon icon={!userToggled ? faUser : faTimes} />
+            <FontAwesomeIcon icon={faUser} />
             <span> 유나은님</span>
           </div>
         </div>

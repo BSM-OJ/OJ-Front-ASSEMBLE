@@ -3,14 +3,14 @@ import Code from "./Code";
 import Link from "next/link";
 import Head from "next/head";
 import type { NextPage } from "next";
-import * as S from "./style";
+import * as S from "../../styles/problem/style";
 import axios from "axios";
 import { Resizable } from "re-resizable";
 import { NextRouter, useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
 import useStore from "../../context/useStore";
 import styles from "../../styles/Home.module.scss";
-// import { URL } from "../../constant/constant";
+import { VIEW_PROBLEM_INFO_URL } from "../../constant/url";
 
 const Problem_default_style: object = {
   // 문제 기본 디자인틀
@@ -42,17 +42,9 @@ const Problem: NextPage = () => {
     setNowProblemNumber: any;
   } = useStore();
 
-  const pid: Pid = route.problem; // 문제 번호
-  React.useEffect(() => {
-    (async () => {
-      await setNowProblemNumber(pid);
-      console.log(nowProblemNumber);
-    })();
-  }, [pid, setNowProblemNumber, nowProblemNumber]);
-
-  function submit() {
+  function getProblemData(pid: string) {
     axios
-      .post(`${""}`, {
+      .post(`${VIEW_PROBLEM_INFO_URL}/${pid}`, {
         send_code: nowCode,
       })
       .then((response: any) => {
@@ -60,8 +52,23 @@ const Problem: NextPage = () => {
       })
       .catch((error: any) => {
         console.log(error);
+        console.log(`${VIEW_PROBLEM_INFO_URL}/${pid}`);
       });
   }
+
+  getProblemData(nowProblemNumber);
+
+  const pid: Pid = route.problem; // 문제 번호
+  React.useEffect(() => {
+    (async () => {
+      await setNowProblemNumber(pid);
+    })();
+  }, [pid, setNowProblemNumber, nowProblemNumber]);
+
+  const submit = () => {
+    console.log("d");
+  };
+
   return (
     <>
       <Head>

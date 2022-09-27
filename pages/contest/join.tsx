@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import type { NextPage } from "next";
-import * as S from "./style";
+import * as S from "../../styles/contest/style";
 
 const ContestJoin: NextPage = () => {
   return (
