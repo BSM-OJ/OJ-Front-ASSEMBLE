@@ -4,23 +4,68 @@ import * as S from "../styles/index-style";
 import ProblemLevel from "../styles/problemlist/problemLevel";
 import router from "next/router";
 import axios from "axios";
-import { GET_USER_INFO_URL } from "../constant/url";
+import {
+  GET_USER_INFO_URL,
+  GET_SOLVED_PROBLEM_URL,
+  GET_ALL_PROBLEM_URL,
+} from "../constant/url";
 
 const Home: NextPage = () => {
-  let config = {
-    method: "get",
-    url: `${GET_USER_INFO_URL}`,
-    headers: {},
-    withCredentials: true,
+  const getUserInfo = () => {
+    // 유저정보 불러오기
+    let config = {
+      method: "get",
+      url: `${GET_USER_INFO_URL}`,
+      headers: {},
+      withCredentials: true,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
-  axios(config)
-    .then(function (response) {
-      console.log(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  const getUserSolvedProblems = () => {
+    // 유저 문제정보 불러오기
+    let config = {
+      method: "get",
+      url: `${GET_SOLVED_PROBLEM_URL}`,
+      headers: {},
+      withCredentials: true,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  const getAllSolvedProblems = () => {
+    // 전체 문제정보 불러오기
+    let config = {
+      method: "get",
+      url: `${GET_ALL_PROBLEM_URL}`,
+      headers: {},
+      withCredentials: true,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  // getAllSolvedProblems();
 
   return (
     <S.Container>

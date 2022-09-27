@@ -10,7 +10,7 @@ import { NextRouter, useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
 import useStore from "../../context/useStore";
 import styles from "../../styles/Home.module.scss";
-import { VIEW_PROBLEM_INFO_URL } from "../../constant/url";
+import { GET_PROBLEM_INFO_URL } from "../../constant/url";
 
 const Problem_default_style: object = {
   // 문제 기본 디자인틀
@@ -45,10 +45,11 @@ const Problem: NextPage = () => {
   function getProblemData(pid: string) {
     let config = {
       method: "get",
-      url: `${VIEW_PROBLEM_INFO_URL}/13`,
+      url: `${GET_PROBLEM_INFO_URL}/${pid}`,
       headers: {},
+      withCredentials: true,
     };
-    console.log(`${VIEW_PROBLEM_INFO_URL}/13`);
+    console.log(`${GET_PROBLEM_INFO_URL}/${pid}`);
 
     axios(config)
       .then(function (response) {
