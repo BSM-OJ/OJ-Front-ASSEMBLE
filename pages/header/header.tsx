@@ -2,19 +2,8 @@ import React from "react";
 import type { NextPage } from "next";
 import * as S from "../../styles/header/style";
 import Link from "next/link";
-import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBars,
-  faUser,
-  faTimes,
-  faMagnifyingGlass,
-} from "@fortawesome/free-solid-svg-icons";
 
 const Header: NextPage = () => {
-  const [isToggled, setIsToggled] = React.useState(false);
-  const [userToggled, setUserToggled] = React.useState(false);
-
   return (
     <S.Header_Wrapper>
       <Link href="/">

@@ -1,9 +1,10 @@
 import type { NextPage } from "next";
-import * as S from "../../styles/index-style";
+import * as S from "../index-style";
 interface PageProps {
   level: string;
   complete: string;
   star: string;
+  problemName: string;
 }
 const ProblemLevel = (props: PageProps) => {
   return (
@@ -21,7 +22,7 @@ const ProblemLevel = (props: PageProps) => {
             : { backgroundColor: "#D01F1F" }
         }
       >
-        LV {props.level}
+        <S.LevelText>LV {props.level}</S.LevelText>
       </S.Level>
 
       <div
@@ -32,7 +33,7 @@ const ProblemLevel = (props: PageProps) => {
           marginTop: "12px",
         }}
       >
-        <S.Content>신고 결과 받기</S.Content>
+        <S.Content>{props.problemName}</S.Content>
         {props.complete === "complete" ? (
           <S.CompleteButton>완료</S.CompleteButton>
         ) : null}

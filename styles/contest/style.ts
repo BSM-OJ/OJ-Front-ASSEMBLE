@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import { color } from "../color";
 
 export const join_container = styled.div`
   width: 450px;
   height: 250px;
-  background-color: #fff;
-  color: #000;
+  color: ${color.main};
+  background-color: ${color.background};
   box-sizing: border-box;
   padding: 30px;
   border-radius: 20px;
@@ -49,7 +50,7 @@ export const join_button = styled.button`
   height: 40px;
   border: 0;
   border-radius: 7px;
-  background-color: #00aaff;
+  background-color: ${color.main};
   color: white;
   font-size: 20px;
 `;
@@ -58,7 +59,7 @@ export const contest_join_button = styled(join_button)`
   // 짧은 버튼
   width: 100px;
   height: 30px;
-  background-color: #00aaff;
+  background-color: ${color.main};
   margin: 0;
   border: 0;
 `;
@@ -66,8 +67,8 @@ export const contest_join_button = styled(join_button)`
 export const contest_container = styled.div`
   width: 70%;
   height: 60px;
-  background-color: #0d1117;
-  color: #eee;
+  background-color: ${color.black};
+  color: ${color.main};
   display: flex;
   justify-content: space-around;
   align-items: center;

@@ -4,7 +4,6 @@ import type { NextPage } from "next";
 import * as S from "../../styles/login/style";
 import axios from "axios";
 import { LOGIN_URL } from "../../constant/url";
-import useStore from "../../context/useStore";
 import { useRouter } from "next/router";
 
 const Login: NextPage = () => {
@@ -23,7 +22,7 @@ const Login: NextPage = () => {
     let config = {
       method: "post",
       url: LOGIN_URL,
-      // url: "http://43.201.36.11:3000/api/user/cookie",
+
       headers: {},
       data: data,
       withCredentials: true,

@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import theme from "./theme";
+import { color } from "./color";
 
 export const Title = styled.h3`
-  color: white;
+  color: ${color.main};
   font-size: 30px;
   font-weight: 400;
 `;
@@ -15,14 +16,15 @@ export const ProblemContainer = styled.div`
 `;
 
 export const Level = styled.div`
-  width: 4vw;
-  min-width: 50px;
-  height: 3.2vh;
-  color: white;
+  width: 50px;
+  height: 25px;
+  color: ${color.main};
   font-size: 14px;
   text-align: center;
-  border-radius: 3.2vh;
-  line-height: 3.2vh;
+  border-radius: 10px;
+`;
+export const LevelText = styled.div`
+  padding-top: 5px;
 `;
 
 export const Container = styled.div`
@@ -39,7 +41,7 @@ export const Problem = styled.div`
   padding: 16px;
   box-sizing: border-box;
   height: 13vh;
-  background-color: #333333;
+  background-color: ${color.background};
   border: 2px solid white;
   border-radius: 20px;
 `;
@@ -47,16 +49,16 @@ export const Problem = styled.div`
 export const CompleteButton = styled.div`
   width: 3vw;
   min-width: 40px;
-  background-color: #7494ab;
+  background-color: ${color.grey};
+  color: ${color.main};
   border-radius: 8px;
   line-height: 3vh;
   text-align: center;
   font-size: 14px;
-  color: white;
 `;
 
 export const Content = styled.span`
-  color: white;
+  color: ${color.main};
   font-size: 16px;
   font-weight: 300;
 `;
