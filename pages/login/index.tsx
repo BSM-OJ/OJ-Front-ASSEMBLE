@@ -15,37 +15,37 @@ const Login: NextPage = () => {
   const router = useRouter();
 
   const submit = () => {
-    // let data = {
-    //   email: email,
-    //   password: password,
-    // };
+    let data = {
+      email: email,
+      password: password,
+    };
 
-    // let config = {
-    //   method: "post",
-    //   // url: LOGIN_URL,
-    //   url: "http://43.201.36.11:3000/api/user/cookie",
-    //   headers: {},
-    //   // data: data,
-    //   withCredentials: true,
-    // };
+    let config = {
+      method: "post",
+      url: LOGIN_URL,
+      // url: "http://43.201.36.11:3000/api/user/cookie",
+      headers: {},
+      data: data,
+      withCredentials: true,
+    };
 
-    // axios(config)
-    //   .then(function (response) {
-    //     console.log(response.data);
-    //     router.push("/");
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-
-    axios
-      .post(`http://localhost:3000/api/user/cookie`, {
-        withCredentials: true,
-      })
-      .then((response) => {
-        console.log(response);
+    axios(config)
+      .then(function (response) {
         console.log(response.data);
+        router.push("/");
+      })
+      .catch(function (error) {
+        console.log(error);
       });
+
+    // axios
+    //   .post(`http://localhost:3000/api/user/cookie`, {
+    //     withCredentials: true,
+    //   })
+    //   .then((response) => {
+    //     console.log(response);
+    //     console.log(response.data);
+    //   });
   };
 
   return (
