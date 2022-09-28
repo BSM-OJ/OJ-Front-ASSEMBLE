@@ -23,6 +23,9 @@ const Header: NextPage = () => {
       <Link href="/">
         <li>대회개최</li>
       </Link>
+      <Link href={`/problem/1`} as={`/problem/1`}>
+        <li>문제풀기</li>
+      </Link>
     </S.Header_Wrapper>
   );
 };

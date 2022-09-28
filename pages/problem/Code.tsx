@@ -47,16 +47,10 @@ const Code: NextPage = () => {
     nowCode, // 지금 쓰고있는 코드
     setNowCode,
     langIdx, // 언어 idx
-    setNowlangIdx,
-    nowProblemNumber, // 지금 푸는 문제번호
-    setNowProblemNumber,
   }: {
     nowCode: string;
     setNowCode: any;
     langIdx: number;
-    setNowlangIdx: any;
-    nowProblemNumber: string;
-    setNowProblemNumber: any;
   } = useStore();
 
   const now_selected_lang: any = code_type[langIdx]; // 현재 선택한 언어

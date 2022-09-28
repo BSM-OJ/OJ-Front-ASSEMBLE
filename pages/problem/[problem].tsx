@@ -29,8 +29,10 @@ const Problem: NextPage = () => {
   const {
     nowCode,
     setNowCode,
+
     langIdx,
     setNowlangIdx,
+
     nowProblemNumber,
     setNowProblemNumber,
   }: {
@@ -42,7 +44,14 @@ const Problem: NextPage = () => {
     setNowProblemNumber: any;
   } = useStore();
 
-  function getProblemData(pid: string) {
+  const [title, setTitle] = React.useState<string>("");
+  const [content, setContent] = React.useState<string>("");
+  const [sources, setSources] = React.useState<string>("");
+  const [timeLimit, setTimeLimit] = React.useState<string>("");
+  const [memoryLimit, setMemoryLimit] = React.useState<string>("");
+  const [problemsExample, setProblemsExample] = React.useState<string[]>([]);
+
+  async function getProblemData(pid: string) {
     let config = {
       method: "get",
       url: `${GET_PROBLEM_INFO_URL}/${pid}`,
@@ -51,24 +60,27 @@ const Problem: NextPage = () => {
     };
     console.log(`${GET_PROBLEM_INFO_URL}/${pid}`);
 
-    axios(config)
+    await axios(config)
       .then(function (response) {
         console.log(response.data);
+        console.log(response.data.title);
+        console.log(response.data.content);
+        console.log(response.data.memory_limit);
+        console.log(response.data.time_limit);
+        console.log(response.data.writer_id);
+        console.log(response.data.problem_examples);
       })
       .catch(function (error) {
         console.log(error);
       });
   }
 
-  getProblemData(nowProblemNumber);
-  console.log(nowProblemNumber);
+  getProblemData(nowProblemNumber); // 문제 정보 불러오기
 
   const pid: Pid = route.problem; // 문제 번호
   React.useEffect(() => {
-    (async () => {
-      await setNowProblemNumber(pid);
-    })();
-  }, [pid, setNowProblemNumber, nowProblemNumber]);
+    setNowProblemNumber(pid);
+  }, [setNowProblemNumber, pid]);
 
   const submit = () => {
     console.log("d");
@@ -80,7 +92,11 @@ const Problem: NextPage = () => {
         {/** 웹 외부요소 선언부 */}
         <title>{nowProblemNumber}번 문제</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta property="og:title" content={"엄엄"} key="title" />
+        <meta
+          property="og:title"
+          content={`${nowProblemNumber} - ${title}`}
+          key="title"
+        />
       </Head>
       <S.container>
         <Resizable

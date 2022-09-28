@@ -26,6 +26,7 @@ const Signup: NextPage = () => {
       url: EMAIL_CERTIFICATE_URL,
       headers: {},
       data: data,
+      withCredentials: true,
     };
     console.log(nickname, email, password);
     axios(config)

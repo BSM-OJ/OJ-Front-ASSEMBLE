@@ -65,8 +65,6 @@ const Home: NextPage = () => {
       });
   };
 
-  // getAllSolvedProblems();
-
   return (
     <S.Container>
       <S.Title>문제목록</S.Title>
