@@ -39,6 +39,10 @@ export const RegisterTextarea = styled.textarea`
   }
 `;
 
+export const RegisterTestcase = styled(RegisterTextarea)`
+  height: 150px;
+`;
+
 export const RegisterLabel = styled.label`
   font-size: 24px;
   display: block;

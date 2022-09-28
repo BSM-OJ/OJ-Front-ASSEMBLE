@@ -116,16 +116,14 @@ const Register: NextPage = () => {
           setMemoryLimit(e.target.value);
         }}
       />
-      <S.RegisterInput
-        type="text"
+      <S.RegisterTestcase
         name="input"
         placeholder="문제의 예제 입력을 입력해주세요."
         onChange={(e) => {
           setInput(e.target.value);
         }}
       />
-      <S.RegisterInput
-        type="text"
+      <S.RegisterTestcase
         name="output"
         placeholder="문제의 예제 출력을 입력해주세요."
         onChange={(e) => {

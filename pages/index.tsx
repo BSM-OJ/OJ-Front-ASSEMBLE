@@ -4,6 +4,7 @@ import * as S from "../styles/index-style";
 import ProblemLevel from "../styles/problemlist/problemLevel";
 import router from "next/router";
 import axios from "axios";
+
 import {
   GET_USER_INFO_URL,
   GET_SOLVED_PROBLEM_URL,
@@ -23,11 +24,14 @@ const Home: NextPage = () => {
     axios(config)
       .then(function (response) {
         console.log(response.data);
+        console.log("로그인");
       })
       .catch(function (error) {
         console.log(error);
+        console.log("비로그인");
       });
   };
+
 
   const getUserSolvedProblems = () => {
     // 유저 문제정보 불러오기
