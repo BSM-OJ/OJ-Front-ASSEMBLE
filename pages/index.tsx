@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import type { NextPage } from "next";
 import * as S from "../styles/index-style";
 import ProblemLevel from "../styles/problemlist/problemLevel";
-import router from "next/router";
 import axios from "axios";
 
 import {
@@ -31,7 +30,6 @@ const Home: NextPage = () => {
         console.log("비로그인");
       });
   };
-
 
   const getUserSolvedProblems = () => {
     // 유저 문제정보 불러오기
@@ -68,6 +66,11 @@ const Home: NextPage = () => {
         console.log(error);
       });
   };
+
+  React.useEffect(() => {
+    getUserInfo();
+    
+  }, []);
 
   return (
     <S.Container>

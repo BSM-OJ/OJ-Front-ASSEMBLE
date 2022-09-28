@@ -2,15 +2,12 @@ import React from "react";
 import type { NextPage } from "next";
 import * as S from "../../styles/header/style";
 import Link from "next/link";
-import { hasCookie, deleteCookie } from "cookies-next";
+import { deleteCookie } from "cookies-next";
+import { useRouter } from "next/router";
 
 const Header: NextPage = () => {
   // deleteCookie("token", { path: "/path", domain: ".yourdomain.com" });
-  const logout = () => {
-    if (hasCookie("token")) {
-      deleteCookie("token");
-    }
-  };
+  const router = useRouter();
 
   return (
     <S.Header_Wrapper>
@@ -20,9 +17,14 @@ const Header: NextPage = () => {
       <Link href="/login">
         <li>로그인</li>
       </Link>
-      <p>
-        <li>로그아웃</li>
-      </p>
+      <li
+        onClick={() => {
+          deleteCookie("token");
+          router.reload();
+        }}
+      >
+        로그아웃
+      </li>
       <Link href="/signup">
         <li>회원가입</li>
       </Link>
