@@ -1,16 +1,18 @@
 import type { NextPage } from "next";
 import axios from "axios";
-import { UPLOAD_PROBLEM_URL } from "../../constant/url";
+import {
+  UPLOAD_PROBLEM_URL,
+  UPLOAD_PROBLEM_EXAMPLESET_URL,
+} from "../../constant/url";
 import * as S from "../../styles/register/style";
 import React from "react";
 import Image from "next/image";
-
 import { NextRouter, useRouter } from "next/router";
+import useStore from "../../context/useStore";
 
 const Register: NextPage = () => {
   const router: NextRouter = useRouter();
-
-  const submit = () => {
+  const submit = async () => {
     let data = {
       title: title,
       content: content,
@@ -26,14 +28,41 @@ const Register: NextPage = () => {
       withCredentials: true,
     };
 
-    axios(config)
+    await axios(config)
       .then(function (response) {
         alert(
-          `등록이 완료되었습니다. 문제의 번호는 ${response.data.ProblemId}번 입니다`
+          `등록이 완료되었습니다. 문제의 번호는 ${response.data.ProblemId}번 입니다 \n`
         );
+        setTestcase(response.data.ProblemId.toString());
       })
       .catch(function (error) {
         alert("등록에 실패하였습니다.");
+      });
+  };
+
+  const setTestcase = async (ProblemId: string) => {
+    let data = {
+      problemId: ProblemId,
+      exampleInput: input,
+      exampleOutput: output,
+    };
+    let config = {
+      method: "post",
+      url: UPLOAD_PROBLEM_EXAMPLESET_URL,
+      headers: {},
+      data: data,
+      withCredentials: true,
+    };
+
+    await axios(config)
+      .then(function (response) {
+        console.log("어엄");
+      })
+      .catch(function (error) {
+        console.log(error);
+        console.log(input);
+        console.log(output);
+        console.log(ProblemId);
       });
   };
 
@@ -42,6 +71,8 @@ const Register: NextPage = () => {
   const [sources, setSources] = React.useState<string>("");
   const [timeLimit, setTimeLimit] = React.useState<string>("");
   const [memoryLimit, setMemoryLimit] = React.useState<string>("");
+  const [input, setInput] = React.useState<string>("");
+  const [output, setOutput] = React.useState<string>("");
 
   return (
     <S.FormContainer>
@@ -54,7 +85,6 @@ const Register: NextPage = () => {
           setTitle(e.target.value);
         }}
       />
-
       <S.RegisterTextarea
         name="content"
         placeholder="문제의 내용을 입력해주세요."
@@ -62,7 +92,6 @@ const Register: NextPage = () => {
           setContent(e.target.value);
         }}
       />
-
       <S.RegisterInput
         type="text"
         name="sources"
@@ -71,7 +100,6 @@ const Register: NextPage = () => {
           setSources(e.target.value);
         }}
       />
-
       <S.RegisterInput
         type="text"
         name="timeLimit"
@@ -80,7 +108,6 @@ const Register: NextPage = () => {
           setTimeLimit(e.target.value);
         }}
       />
-
       <S.RegisterInput
         type="text"
         name="memoryLimit"
@@ -89,7 +116,28 @@ const Register: NextPage = () => {
           setMemoryLimit(e.target.value);
         }}
       />
-
+      <S.RegisterInput
+        type="text"
+        name="input"
+        placeholder="문제의 예제 입력을 입력해주세요."
+        onChange={(e) => {
+          setInput(e.target.value);
+        }}
+      />
+      <S.RegisterInput
+        type="text"
+        name="output"
+        placeholder="문제의 예제 출력을 입력해주세요."
+        onChange={(e) => {
+          setOutput(e.target.value);
+        }}
+      />
+      <p style={{ textAlign: "center", color: "white" }}>
+        해당 페이지에서 예제 등록은 1개까지 가능하며,
+      </p>
+      <p style={{ textAlign: "center", color: "white" }}>
+        문제 설정에서 다른 예제를 추가할 수 있습니다.
+      </p>
       <S.RegisterButton onClick={submit}>등록하기</S.RegisterButton>
     </S.FormContainer>
   );

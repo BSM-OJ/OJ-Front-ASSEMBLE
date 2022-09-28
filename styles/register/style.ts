@@ -3,8 +3,10 @@ import { color } from "../color";
 
 export const RegisterInput = styled.input`
   display: block;
+  width: 500px;
   height: 10px;
   margin: 10px auto;
+  box-sizing: border-box;
   padding: 20px 20px;
   border-radius: 8px;
   border: 1px solid ${color.main};
@@ -15,7 +17,8 @@ export const RegisterInput = styled.input`
 
 export const RegisterTextarea = styled.textarea`
   display: block;
-  width: 292px;
+  width: 500px;
+  height: 600px;
   box-sizing: border-box;
   margin: 10px auto;
   padding: 20px 20px;
