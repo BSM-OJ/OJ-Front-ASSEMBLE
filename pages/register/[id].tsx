@@ -17,7 +17,6 @@ const UploadTestcase: NextPage = () => {
   const [output, setOutput] = React.useState<string>("");
   const [title, setTitle] = React.useState<string>("");
   const [testcaseLength, setTestcaseLength] = React.useState<string>("");
-  const [problemExamples, setProblemExamples] = React.useState<string[]>([]);
   type id = string | string[] | undefined; // pid 기본 타입, 처음에 로딩 안될때는 undefined라서 어쩔수없
 
   const setTestcase = async (ProblemId: id) => {
@@ -57,7 +56,7 @@ const UploadTestcase: NextPage = () => {
         })
         .catch(function (error) {});
     }
-  }, [problemExamples, route.id]);
+  }, [route.id]);
 
   return (
     <main>
