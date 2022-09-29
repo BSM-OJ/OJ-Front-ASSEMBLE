@@ -121,6 +121,15 @@ const Problem: NextPage = () => {
     axios(config)
       .then(function (response) {
         console.log(response.data);
+
+        if (
+          response.data.message === "정답입니다." ||
+          response.data.stderr === ""
+        ) {
+          alert(response.data.message);
+        } else {
+          alert("컴파일 에러입니다.");
+        }
       })
       .catch(function (error) {
         alert(error.response.data.message);

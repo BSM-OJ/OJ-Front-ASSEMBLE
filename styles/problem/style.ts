@@ -42,6 +42,7 @@ export const Container = styled.div`
 export const top_content = styled.div`
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
 `;
 
