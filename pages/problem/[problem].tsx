@@ -10,7 +10,11 @@ import { NextRouter, useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
 import useStore from "../../context/useStore";
 import styles from "../../styles/Home.module.scss";
-import { GET_PROBLEM_INFO_URL } from "../../constant/url";
+import {
+  GET_PROBLEM_INFO_URL,
+  POST_CODE_TEST_URL,
+  POST_CODE_SUBMIT_URL,
+} from "../../constant/url";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 // 에디터 기본 디자인
@@ -61,6 +65,8 @@ const Problem: NextPage = () => {
     problemsExampleType[]
   >([]);
 
+  const [userInput, setuserInput] = React.useState<string>("");
+
   async function getProblemData(pid: Pid) {
     let config = {
       method: "get",
@@ -79,14 +85,6 @@ const Problem: NextPage = () => {
         setTimeLimit(response.data.time_limit);
         setSources(response.data.sources);
         setProblemsExample(response.data.problem_examples);
-
-        console.log(response.data.title);
-        console.log(response.data.content);
-        console.log(response.data.memory_limit);
-        console.log(response.data.time_limit);
-        console.log(response.data.writer_id);
-        console.log(response.data.problem_examples);
-        console.log(response.data.sources);
       })
       .catch(function (error) {
         alert("비로그인 상태입니다. 확인을 누르시면 메인으로 돌아갑니다.");
@@ -102,8 +100,55 @@ const Problem: NextPage = () => {
     // eslint-disable-next-line
   }, [pid]);
 
+  const lang_names: string[] = ["py", "c", "cpp", "javascript", "java"];
+
   const submit = () => {
-    console.log("d");
+    let data = {
+      type: lang_names[langIdx],
+      code: nowCode,
+      problemId: parseInt(nowProblemNumber),
+    };
+    console.log(data);
+    console.log(langIdx, nowCode, nowProblemNumber);
+    let config = {
+      method: "post",
+      url: POST_CODE_SUBMIT_URL,
+      headers: {},
+      data: data,
+      withCredentials: true,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        alert(error.response.data.message);
+        console.log(error);
+      });
+  };
+
+  const userComplie = () => {
+    let data = {
+      type: lang_names[langIdx],
+      code: nowCode,
+      stdin: userInput,
+    };
+    let config = {
+      method: "post",
+      url: POST_CODE_TEST_URL,
+      headers: {},
+      data: data,
+      withCredentials: true,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   return (
@@ -126,7 +171,6 @@ const Problem: NextPage = () => {
             width: "30vw",
             height: "94vh",
           }}
-          // height: "100%",
           minWidth="100px"
         >
           {/** 좌측 문제 부분 */}
@@ -154,6 +198,20 @@ const Problem: NextPage = () => {
 
           {content}
 
+          <S.FormElement>
+            <S.UserTextLabel htmlFor="userInput">테스트</S.UserTextLabel>
+            <S.UserTextInput
+              type="text"
+              placeholder="입력"
+              id="userInput"
+              autoComplete="on"
+              onChange={(e: any) => {
+                setuserInput(e.target.value);
+              }}
+            />
+            <S.submitBtn onClick={userComplie}>컴파일</S.submitBtn>
+          </S.FormElement>
+
           {problemsExample.map((data: problemsExampleType, idx: number) => {
             return (
               <S.ExampleFullContainer key={idx}>
@@ -179,7 +237,7 @@ const Problem: NextPage = () => {
             );
           })}
           <h2>출처</h2>
-          <Link href="#">{sources}</Link>
+          <p>{sources}</p>
         </Resizable>
         <Code /> {/** 우측 IDE 부분 */}
       </S.Container>

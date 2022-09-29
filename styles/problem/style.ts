@@ -6,7 +6,7 @@ export const submitBtn = styled.button`
   border-radius: 6px;
   background-color: ${color.blue};
   color: #333;
-  width: 60px;
+  min-width: 60px;
   height: 40px;
   font-size: 16px;
   transition: 0.3s;
@@ -41,6 +41,7 @@ export const Container = styled.div`
 
 export const top_content = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 `;
 
@@ -64,4 +65,38 @@ export const Example = styled.p`
   padding: 10px;
   box-sizing: border-box;
   border-radius: 2px;
+`;
+
+export const UserTextInput = styled.input`
+  display: block;
+  width: 90%;
+  height: 10px;
+  margin: 10px 0;
+  padding: 20px 20px;
+  border-radius: 8px;
+  border: 0;
+  &::placeholder {
+    font-size: 16px;
+  }
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const FormElement = styled.div`
+  display: block;
+  margin-top: 40px;
+`;
+
+export const UserTextLabel = styled.label`
+  font-size: 18px;
+  display: block;
+  font-weight: 700;
+  color: ${color.main};
 `;
