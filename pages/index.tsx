@@ -106,7 +106,7 @@ const Home: NextPage = () => {
             <ProblemLevel
               problemName={data.title}
               key={idx}
-              level={data.id.toString()}
+              problemNumber={data.id.toString()}
               complete={"complete"}
             />
           );

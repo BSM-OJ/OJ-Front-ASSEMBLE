@@ -1,7 +1,9 @@
 import type { NextPage } from "next";
 import * as S from "../index-style";
+import Link from "next/link";
+
 interface PageProps {
-  level: string;
+  problemNumber: string;
   complete: string;
   problemName: string;
 }
@@ -9,7 +11,7 @@ const ProblemLevel = (props: PageProps) => {
   return (
     <S.Problem>
       <S.Level style={{ backgroundColor: "#00aaff" }}>
-        <S.LevelText>{props.level}</S.LevelText>
+        <S.LevelText>{props.problemNumber}</S.LevelText>
       </S.Level>
 
       <div
@@ -20,7 +22,9 @@ const ProblemLevel = (props: PageProps) => {
           marginTop: "12px",
         }}
       >
-        <S.Content>{props.problemName}</S.Content>
+        <Link href={`/problem/${props.problemNumber}`}>
+          <S.Content>{props.problemName}</S.Content>
+        </Link>
         {props.complete === "complete" ? (
           <S.CompleteButton>완료</S.CompleteButton>
         ) : null}
