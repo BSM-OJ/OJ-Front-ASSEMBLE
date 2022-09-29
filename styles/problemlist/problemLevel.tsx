@@ -3,26 +3,13 @@ import * as S from "../index-style";
 interface PageProps {
   level: string;
   complete: string;
-  star: string;
   problemName: string;
 }
 const ProblemLevel = (props: PageProps) => {
   return (
     <S.Problem>
-      <S.Level
-        style={
-          props.level === "1"
-            ? { backgroundColor: "#4CAF50" }
-            : props.level === "2"
-            ? { backgroundColor: "#FFC107" }
-            : props.level === "3"
-            ? { backgroundColor: "#FF9800" }
-            : props.level === "4"
-            ? { backgroundColor: "#FF5722" }
-            : { backgroundColor: "#D01F1F" }
-        }
-      >
-        <S.LevelText>LV {props.level}</S.LevelText>
+      <S.Level style={{ backgroundColor: "#00aaff" }}>
+        <S.LevelText>{props.level}</S.LevelText>
       </S.Level>
 
       <div

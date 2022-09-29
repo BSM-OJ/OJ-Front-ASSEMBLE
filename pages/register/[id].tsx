@@ -17,11 +17,11 @@ const UploadTestcase: NextPage = () => {
   const [output, setOutput] = React.useState<string>("");
   const [title, setTitle] = React.useState<string>("");
   const [testcaseLength, setTestcaseLength] = React.useState<string>("");
-  type id = string | string[] | undefined; // pid 기본 타입, 처음에 로딩 안될때는 undefined라서 어쩔수없
+  type dynamic_routing = string | string[] | undefined; // pid 기본 타입, 처음에 로딩 안될때는 undefined라서 어쩔수없
 
-  const setTestcase = async (ProblemId: id) => {
+  const setTestcase = async (ProblemId: dynamic_routing) => {
     let data = {
-      problemId: ProblemId && ProblemId, // 문제 번호
+      problemId: ProblemId, // 문제 번호
       exampleInput: input,
       exampleOutput: output,
     };
@@ -54,7 +54,9 @@ const UploadTestcase: NextPage = () => {
           setTitle(response.data.title);
           console.log(response.data.problem_examples);
         })
-        .catch(function (error) {});
+        .catch(function (error) {
+          alert("권한이 없습니다.");
+        });
     }
   }, [route.id]);
 
@@ -64,7 +66,7 @@ const UploadTestcase: NextPage = () => {
         {route.id} - {title && title}
       </S.MainText>
       <S.MainText>
-        현재 {testcaseLength}개의 테스트케이스가 등록되어 있습니다.
+        현재 총 {testcaseLength}개의 테스트케이스가 등록되어 있습니다.
       </S.MainText>
       <S.RegisterTestcase
         name="input"
