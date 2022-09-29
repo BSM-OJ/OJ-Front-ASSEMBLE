@@ -100,7 +100,7 @@ const Problem: NextPage = () => {
     // eslint-disable-next-line
   }, [pid]);
 
-  const lang_names: string[] = ["py", "c", "cpp", "javascript", "java"];
+  const lang_names: string[] = ["py", "c", "cpp", "node", "java"];
 
   const submit = () => {
     let data = {
@@ -120,8 +120,6 @@ const Problem: NextPage = () => {
 
     axios(config)
       .then(function (response) {
-        console.log(response.data);
-
         if (
           response.data.message === "정답입니다." ||
           response.data.stderr === ""
@@ -133,15 +131,14 @@ const Problem: NextPage = () => {
       })
       .catch(function (error) {
         alert(error.response.data.message);
-        console.log(error);
+        // console.log(error);
       });
   };
 
   const userComplie = () => {
-    const submitCode = nowCode.replaceAll("\n", ";");
     let data = {
       type: lang_names[langIdx],
-      code: submitCode,
+      code: nowCode,
       stdin: userInput,
     };
     let config = {
@@ -151,10 +148,24 @@ const Problem: NextPage = () => {
       data: data,
       withCredentials: true,
     };
-
+    console.log(data);
     axios(config)
       .then(function (response) {
         console.log(response.data);
+        if (response.data.stderr === "") {
+          alert(`
+메모리 : ${Math.round(response.data.memoryUsage)}MB
+시간 : ${Math.round(response.data.runTime)}ms
+출력 결과 \n${response.data.stdout}
+`);
+        } else {
+          alert(`런타임 에러!!
+${response.data.stderr}
+메모리 : ${Math.round(response.data.memoryUsage)}MB
+시간 : ${Math.round(response.data.runTime)}ms
+출력 결과 \n${response.data.stdout}
+`);
+        }
       })
       .catch(function (error) {
         console.log(error);
@@ -179,7 +190,7 @@ const Problem: NextPage = () => {
           className={styles.main}
           defaultSize={{
             width: "30vw",
-            height: "94vh",
+            height: "93.3vh",
           }}
           minWidth="100px"
         >
