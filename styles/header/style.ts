@@ -4,7 +4,6 @@ export const Header_Wrapper = styled.header`
   width: 100%;
   height: 40px;
   list-style: none;
-  margin: 0 auto;
   display: flex;
   justify-content: space-around;
   align-items: center;

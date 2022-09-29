@@ -32,11 +32,36 @@ export const lang = styled.option`
   background-color: ${color.main};
 `;
 
-export const container = styled.div`
+export const Container = styled.div`
   display: flex;
+  ::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
 `;
 
 export const top_content = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+export const ExampleContainer = styled.div`
+  margin: 20px 0;
+`;
+
+export const ExampleFullContainer = styled.div`
+  margin: 70px 0;
+`;
+
+export const ExampleCopy = styled.a`
+  font-size: 16px;
+`;
+
+export const Example = styled.p`
+  overflow-x: auto;
+  overflow-y: auto;
+  line-height: normal;
+  background-color: grey;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 2px;
 `;

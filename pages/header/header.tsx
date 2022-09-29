@@ -15,9 +15,7 @@ const Header: NextPage = () => {
   }: { headerLoginText: string; setHeaderLoginText: any; isLogin: boolean } =
     useStore();
 
-  React.useEffect(() => {
-    
-  }, []);
+  React.useEffect(() => {}, []);
 
   const router = useRouter();
 
