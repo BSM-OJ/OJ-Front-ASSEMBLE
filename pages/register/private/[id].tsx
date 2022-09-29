@@ -8,6 +8,7 @@ import {
   UPLOAD_PRIVATE_PROBLEM_EXAMPLESET_URL,
 } from "../../../constant/url";
 import axios from "axios";
+import Head from "next/head";
 
 const UploadTestcase: NextPage = () => {
   const router: NextRouter = useRouter();
@@ -66,39 +67,52 @@ const UploadTestcase: NextPage = () => {
   }, [route.id]);
 
   return (
-    <main>
-      <S.MainText>실제로 채점하는 데이터입니다.</S.MainText>
-      <S.MainText>
-        {route.id} - {title && title}
-      </S.MainText>
-      <S.RegisterTestcase
-        name="input"
-        placeholder="문제의 예제 입력을 입력해주세요."
-        onChange={(e) => {
-          setInput(e.target.value);
-        }}
-      />
-      <S.RegisterTestcase
-        name="output"
-        placeholder="문제의 예제 출력을 입력해주세요."
-        onChange={(e) => {
-          setOutput(e.target.value);
-        }}
-      />
-      <p style={{ textAlign: "center", color: "white" }}>
-        예제 등록은 한번에 최대 1개까지 가능합니다.
-      </p>
-      <p style={{ textAlign: "center", color: "white" }}>
-        현재까지 등록된 예제는 F12 - Console 에서 확인 가능합니다.
-      </p>
-      <S.RegisterButton
-        onClick={() => {
-          setTestcase(route.id);
-        }}
-      >
-        등록하기
-      </S.RegisterButton>
-    </main>
+    <>
+      <Head>
+        {/** 웹 외부요소 선언부 */}
+        <title>{route.id}번 문제</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta content="text/html; charset=utf-8" />
+        <meta
+          property="og:title"
+          content={`${route.id} - ${title}`}
+          key="title"
+        />
+      </Head>
+      <main>
+        <S.MainText>실제로 채점하는 데이터입니다.</S.MainText>
+        <S.MainText>
+          {route.id} - {title && title}
+        </S.MainText>
+        <S.RegisterTestcase
+          name="input"
+          placeholder="문제의 예제 입력을 입력해주세요."
+          onChange={(e) => {
+            setInput(e.target.value);
+          }}
+        />
+        <S.RegisterTestcase
+          name="output"
+          placeholder="문제의 예제 출력을 입력해주세요."
+          onChange={(e) => {
+            setOutput(e.target.value);
+          }}
+        />
+        <p style={{ textAlign: "center", color: "white" }}>
+          예제 등록은 한번에 최대 1개까지 가능합니다.
+        </p>
+        <p style={{ textAlign: "center", color: "white" }}>
+          현재까지 등록된 예제는 F12 - Console 에서 확인 가능합니다.
+        </p>
+        <S.RegisterButton
+          onClick={() => {
+            setTestcase(route.id);
+          }}
+        >
+          등록하기
+        </S.RegisterButton>
+      </main>
+    </>
   );
 };
 

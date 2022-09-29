@@ -12,13 +12,14 @@ import useStore from "../context/useStore";
 
 const Home: NextPage = () => {
   interface problemDataType {
-    content: string;
     id: number;
-    memory_limit: number;
+    writer_id: number;
+    title: string;
+    difficulty: number;
+    content: string;
     sources: string;
     time_limit: number;
-    title: string;
-    writer_id: number;
+    memory_limit: number;
   }
   const {
     isLogin,
@@ -102,9 +103,12 @@ const Home: NextPage = () => {
       <S.Title>문제목록</S.Title>
       <S.ProblemContainer>
         {problemData.map((data: problemDataType, idx: number) => {
+          console.log(problemData);
+
           return (
             <ProblemLevel
               problemName={data.title}
+              difficulty={data.difficulty}
               key={idx}
               problemNumber={data.id.toString()}
               complete={"complete"}

@@ -178,6 +178,7 @@ ${response.data.stderr}
         {/** 웹 외부요소 선언부 */}
         <title>{nowProblemNumber}번 문제</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta content="text/html; charset=utf-8" />
         <meta
           property="og:title"
           content={`${nowProblemNumber} - ${title}`}

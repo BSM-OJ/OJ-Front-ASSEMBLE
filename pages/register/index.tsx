@@ -6,12 +6,10 @@ import {
 } from "../../constant/url";
 import * as S from "../../styles/register/style";
 import React from "react";
-import Image from "next/image";
 import { NextRouter, useRouter } from "next/router";
-import useStore from "../../context/useStore";
+import Head from "next/head";
 
 const Register: NextPage = () => {
-  const router: NextRouter = useRouter();
   const submit = async () => {
     let data = {
       title: title,
@@ -80,77 +78,89 @@ const Register: NextPage = () => {
   const [output, setOutput] = React.useState<string>("");
 
   return (
-    <S.FormContainer>
-      <S.MainText>문제 등록</S.MainText>
-      <S.RegisterInput
-        type="text"
-        name="title"
-        placeholder="문제의 제목을 입력해주세요."
-        onChange={(e) => {
-          setTitle(e.target.value);
-        }}
-      />
-      <S.RegisterInput
-        type="text"
-        name="difficulty"
-        placeholder="문제의 난이도를 입력해주세요. (1~5)"
-        onChange={(e) => {
-          setDifficulty(e.target.value);
-        }}
-      />
-      <S.RegisterTextarea
-        name="content"
-        placeholder="문제의 내용을 입력해주세요."
-        onChange={(e) => {
-          setContent(e.target.value);
-        }}
-      />
-      <S.RegisterInput
-        type="text"
-        name="sources"
-        placeholder="문제의 출처를 입력해주세요."
-        onChange={(e) => {
-          setSources(e.target.value);
-        }}
-      />
-      <S.RegisterInput
-        type="text"
-        name="timeLimit"
-        placeholder="문제의 시간 제한을 입력해주세요. (ms단위)"
-        onChange={(e) => {
-          setTimeLimit(e.target.value);
-        }}
-      />
-      <S.RegisterInput
-        type="text"
-        name="memoryLimit"
-        placeholder="문제의 메모리 제한을 입력해주세요. (MB단위)"
-        onChange={(e) => {
-          setMemoryLimit(e.target.value);
-        }}
-      />
-      <S.RegisterTestcase
-        name="input"
-        placeholder="문제의 예제 입력을 입력해주세요."
-        onChange={(e) => {
-          setInput(e.target.value);
-        }}
-      />
-      <S.RegisterTestcase
-        name="output"
-        placeholder="문제의 예제 출력을 입력해주세요."
-        onChange={(e) => {
-          setOutput(e.target.value);
-        }}
-      />
-      <p style={{ textAlign: "center", color: "white" }}>
-        해당 페이지에서 예제 등록은 1개까지 가능하며,
-      </p>
-      <p style={{ textAlign: "center", color: "white" }}>
-        문제 설정에서 다른 예제를 추가할 수 있습니다.
-      </p>
-      <S.RegisterButton onClick={submit}>등록하기</S.RegisterButton>
-    </S.FormContainer>
+    <>
+      <Head>
+        {/** 웹 외부요소 선언부 */}
+        <title>문제 등록</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta content="text/html; charset=utf-8" />
+        <meta
+          property="og:title"
+          key="title"
+        />
+      </Head>
+      <S.FormContainer>
+        <S.MainText>문제 등록</S.MainText>
+        <S.RegisterInput
+          type="text"
+          name="title"
+          placeholder="문제의 제목을 입력해주세요."
+          onChange={(e) => {
+            setTitle(e.target.value);
+          }}
+        />
+        <S.RegisterInput
+          type="text"
+          name="difficulty"
+          placeholder="문제의 난이도를 입력해주세요. (1~5)"
+          onChange={(e) => {
+            setDifficulty(e.target.value);
+          }}
+        />
+        <S.RegisterTextarea
+          name="content"
+          placeholder="문제의 내용을 입력해주세요."
+          onChange={(e) => {
+            setContent(e.target.value);
+          }}
+        />
+        <S.RegisterInput
+          type="text"
+          name="sources"
+          placeholder="문제의 출처를 입력해주세요."
+          onChange={(e) => {
+            setSources(e.target.value);
+          }}
+        />
+        <S.RegisterInput
+          type="text"
+          name="timeLimit"
+          placeholder="문제의 시간 제한을 입력해주세요. (ms단위)"
+          onChange={(e) => {
+            setTimeLimit(e.target.value);
+          }}
+        />
+        <S.RegisterInput
+          type="text"
+          name="memoryLimit"
+          placeholder="문제의 메모리 제한을 입력해주세요. (MB단위)"
+          onChange={(e) => {
+            setMemoryLimit(e.target.value);
+          }}
+        />
+        <S.RegisterTestcase
+          name="input"
+          placeholder="문제의 예제 입력을 입력해주세요."
+          onChange={(e) => {
+            setInput(e.target.value);
+          }}
+        />
+        <S.RegisterTestcase
+          name="output"
+          placeholder="문제의 예제 출력을 입력해주세요."
+          onChange={(e) => {
+            setOutput(e.target.value);
+          }}
+        />
+        <p style={{ textAlign: "center", color: "white" }}>
+          해당 페이지에서 예제 등록은 1개까지 가능하며,
+        </p>
+        <p style={{ textAlign: "center", color: "white" }}>
+          문제 설정에서 다른 예제를 추가할 수 있습니다.
+        </p>
+        <S.RegisterButton onClick={submit}>등록하기</S.RegisterButton>
+      </S.FormContainer>
+    </>
   );
 };
 

@@ -15,8 +15,6 @@ const Header: NextPage = () => {
   }: { headerLoginText: string; setHeaderLoginText: any; isLogin: boolean } =
     useStore();
 
-  React.useEffect(() => {}, []);
-
   const router = useRouter();
 
   return (
@@ -44,9 +42,16 @@ const Header: NextPage = () => {
       <Link href="/contest/list">
         <li>대회목록</li>
       </Link>
-      <Link href="/">
-        <li>대회개최</li>
+      <Link href="/register">
+        <li>문제등록</li>
       </Link>
+      <Link href="/register/1">
+        <li>문제 예제등록</li>
+      </Link>
+      <Link href="/register/private/1">
+        <li>문제 찐테케등록</li>
+      </Link>
+
       <Link href={`/problem/1`} as={`/problem/1`}>
         <li>문제풀기</li>
       </Link>
