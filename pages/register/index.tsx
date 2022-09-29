@@ -17,6 +17,7 @@ const Register: NextPage = () => {
       title: title,
       content: content,
       sources: sources,
+      difficulty: difficulty,
       time_limit: timeLimit,
       memory_limit: memoryLimit,
     };
@@ -36,6 +37,8 @@ const Register: NextPage = () => {
         setTestcase(response.data.ProblemId.toString());
       })
       .catch(function (error) {
+        console.log(error);
+
         alert("등록에 실패하였습니다.");
       });
   };
@@ -69,6 +72,8 @@ const Register: NextPage = () => {
   const [title, setTitle] = React.useState<string>("");
   const [content, setContent] = React.useState<string>("");
   const [sources, setSources] = React.useState<string>("");
+  const [difficulty, setDifficulty] = React.useState<string>("");
+
   const [timeLimit, setTimeLimit] = React.useState<string>("");
   const [memoryLimit, setMemoryLimit] = React.useState<string>("");
   const [input, setInput] = React.useState<string>("");
@@ -83,6 +88,14 @@ const Register: NextPage = () => {
         placeholder="문제의 제목을 입력해주세요."
         onChange={(e) => {
           setTitle(e.target.value);
+        }}
+      />
+      <S.RegisterInput
+        type="text"
+        name="difficulty"
+        placeholder="문제의 난이도를 입력해주세요. (1~5)"
+        onChange={(e) => {
+          setDifficulty(e.target.value);
         }}
       />
       <S.RegisterTextarea
@@ -103,7 +116,7 @@ const Register: NextPage = () => {
       <S.RegisterInput
         type="text"
         name="timeLimit"
-        placeholder="문제의 시간 제한을 입력해주세요. (초단위)"
+        placeholder="문제의 시간 제한을 입력해주세요. (ms단위)"
         onChange={(e) => {
           setTimeLimit(e.target.value);
         }}

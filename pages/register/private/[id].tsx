@@ -31,6 +31,10 @@ const UploadTestcase: NextPage = () => {
       data: data,
       withCredentials: true,
     };
+    if (data.answerOutput == "") {
+      alert("출력은 공백일 수 없습니다.");
+      return;
+    }
     await axios(config)
       .then(function (response) {
         alert("등록이 완료되었습니다.");
@@ -54,9 +58,11 @@ const UploadTestcase: NextPage = () => {
           setTitle(response.data.title);
         })
         .catch(function (error) {
-          alert("권한이 없습니다.");
+          alert("접근 권한이 없습니다.");
+          router.push("/");
         });
     }
+    // eslint-disable-next-line
   }, [route.id]);
 
   return (

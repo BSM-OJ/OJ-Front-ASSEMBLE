@@ -34,15 +34,6 @@ const Login: NextPage = () => {
       .catch(function (error) {
         alert(error.response.data.message);
       });
-
-    // axios
-    //   .post(`http://localhost:3000/api/user/cookie`, {
-    //     withCredentials: true,
-    //   })
-    //   .then((response) => {
-    //     console.log(response);
-    //     console.log(response.data);
-    //   });
   };
 
   return (

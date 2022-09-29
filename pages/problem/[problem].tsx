@@ -129,9 +129,10 @@ const Problem: NextPage = () => {
   };
 
   const userComplie = () => {
+    const submitCode = nowCode.replaceAll("\n", ";");
     let data = {
       type: lang_names[langIdx],
-      code: nowCode,
+      code: submitCode,
       stdin: userInput,
     };
     let config = {
@@ -191,10 +192,10 @@ const Problem: NextPage = () => {
             <S.submitBtn onClick={submit}>제출</S.submitBtn>
           </S.top_content>
           <h2>
-            {pid} {title}
+            {pid} - {title}
           </h2>
           <h4>메모리 제한 : {memoryLimit}MB</h4>
-          <h4>시간 제한 : {timeLimit}초</h4>
+          <h4>시간 제한 : {parseInt(timeLimit) / 1000}초</h4>
 
           {content}
 

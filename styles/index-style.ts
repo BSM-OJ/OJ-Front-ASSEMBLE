@@ -37,6 +37,8 @@ export const Container = styled.div`
 
 export const Problem = styled.div`
   min-width: 190px;
+  min-height: 90px;
+
   margin: 10px;
   padding: 16px;
   box-sizing: border-box;
@@ -49,10 +51,10 @@ export const Problem = styled.div`
 export const CompleteButton = styled.div`
   width: 3vw;
   min-width: 40px;
+  min-height: 20px;
   background-color: ${color.grey};
   color: ${color.main};
   border-radius: 8px;
-  line-height: 3vh;
   text-align: center;
   font-size: 14px;
 `;
