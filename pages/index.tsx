@@ -92,10 +92,10 @@ const Home: NextPage = () => {
   React.useEffect(() => {
     getUserInfo();
     if (isLogin) {
+      setHeaderLoginText("로그인상태임");
       getAllProblems();
-      setHeaderLoginText("로그아웃하실래요");
     } else {
-      setHeaderLoginText("로그인하실랜드");
+      setHeaderLoginText("로그아웃상태임");
     }
     // eslint-disable-next-line
   }, [isLogin]); // 넣을필요 없는데 왜넣으라고해 ㅋ

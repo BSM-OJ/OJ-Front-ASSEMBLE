@@ -36,6 +36,7 @@ const UploadTestcase: NextPage = () => {
     await axios(config)
       .then(function (response) {
         alert("등록이 완료되었습니다.");
+        setTestcaseLength(testcaseLength + 1);
       })
       .catch(function (error) {
         alert("권한이 없습니다.");
