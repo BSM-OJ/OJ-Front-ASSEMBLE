@@ -140,14 +140,14 @@ const Register: NextPage = () => {
         />
         <S.RegisterTestcase
           name="input"
-          placeholder="문제의 예제 입력을 입력해주세요."
+          placeholder="문제의 테스트케이스 입력을 입력해주세요."
           onChange={(e) => {
             setInput(e.target.value);
           }}
         />
         <S.RegisterTestcase
           name="output"
-          placeholder="문제의 예제 출력을 입력해주세요."
+          placeholder="문제의 테스트케이스 출력을 입력해주세요."
           onChange={(e) => {
             setOutput(e.target.value);
           }}
