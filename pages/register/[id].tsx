@@ -1,4 +1,6 @@
 import React from "react";
+import axios from "axios";
+import Head from "next/head";
 import type { NextPage } from "next";
 import * as S from "../../styles/register/style";
 import { NextRouter, useRouter } from "next/router";
@@ -7,8 +9,6 @@ import {
   GET_PROBLEM_INFO_URL,
   UPLOAD_PROBLEM_EXAMPLESET_URL,
 } from "../../constant/url";
-import axios from "axios";
-import Head from "next/head";
 
 const UploadTestcase: NextPage = () => {
   const router: NextRouter = useRouter();
@@ -37,7 +37,9 @@ const UploadTestcase: NextPage = () => {
       .then(function (response) {
         alert("등록이 완료되었습니다.");
       })
-      .catch(function (error) {});
+      .catch(function (error) {
+        alert("권한이 없습니다.");
+      });
   };
 
   React.useEffect(() => {
@@ -55,9 +57,7 @@ const UploadTestcase: NextPage = () => {
           setTitle(response.data.title);
           console.log(response.data.problem_examples);
         })
-        .catch(function (error) {
-          alert("권한이 없습니다.");
-        });
+        .catch(function (error) {});
     }
   }, [route.id]);
 

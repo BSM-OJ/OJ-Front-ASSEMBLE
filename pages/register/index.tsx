@@ -84,10 +84,7 @@ const Register: NextPage = () => {
         <title>문제 등록</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta content="text/html; charset=utf-8" />
-        <meta
-          property="og:title"
-          key="title"
-        />
+        <meta property="og:title" key="title" />
       </Head>
       <S.FormContainer>
         <S.MainText>문제 등록</S.MainText>

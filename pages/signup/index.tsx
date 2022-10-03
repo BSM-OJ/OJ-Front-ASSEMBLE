@@ -32,7 +32,7 @@ const Signup: NextPage = () => {
     axios(config)
       .then(function (response) {
         alert("가입이 완료되었습니다.");
-        router.push("/");
+        router.push("/login");
       })
       .catch(function (error) {
         console.log(error);

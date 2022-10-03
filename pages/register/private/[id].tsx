@@ -101,9 +101,6 @@ const UploadTestcase: NextPage = () => {
         <p style={{ textAlign: "center", color: "white" }}>
           예제 등록은 한번에 최대 1개까지 가능합니다.
         </p>
-        <p style={{ textAlign: "center", color: "white" }}>
-          현재까지 등록된 예제는 F12 - Console 에서 확인 가능합니다.
-        </p>
         <S.RegisterButton
           onClick={() => {
             setTestcase(route.id);

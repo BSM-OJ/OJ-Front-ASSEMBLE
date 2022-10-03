@@ -20,12 +20,12 @@ export const Level = styled.div`
   height: 25px;
   color: ${color.main};
   font-size: 14px;
-  text-align: center;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
-export const LevelText = styled.div`
-  padding-top: 5px;
-`;
+export const LevelText = styled.div``;
 
 export const Container = styled.div`
   width: 100%;
@@ -55,8 +55,10 @@ export const CompleteButton = styled.div`
   background-color: ${color.grey};
   color: ${color.main};
   border-radius: 8px;
-  text-align: center;
   font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
 `;
 
 export const Content = styled.span`

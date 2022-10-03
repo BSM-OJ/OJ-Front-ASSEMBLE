@@ -27,6 +27,7 @@ const Home: NextPage = () => {
     setHeaderLoginText,
   }: { isLogin: boolean; setIsLogin: any; setHeaderLoginText: any } =
     useStore();
+  const [myId, setMyId] = React.useState<number>(-1);
   const [problemData, setProblemData] = React.useState<problemDataType[]>([]);
   const getUserInfo = () => {
     // 유저정보 불러오기
@@ -41,6 +42,7 @@ const Home: NextPage = () => {
       .then(function (response) {
         console.log(response.data);
         console.log("로그인");
+        setMyId(response.data.id);
         setIsLogin(true);
         console.log(isLogin);
       })
@@ -107,11 +109,13 @@ const Home: NextPage = () => {
 
           return (
             <ProblemLevel
+              myId={myId}
               problemName={data.title}
               difficulty={data.difficulty}
               key={idx}
               problemNumber={data.id.toString()}
               complete={"complete"}
+              author={data.writer_id}
             />
           );
         })}
