@@ -8,7 +8,6 @@ const ContestJoin: NextPage = () => {
   return (
     <>
       <Head>
-        {/** 웹 외부요소 선언부 */}
         <title>대회 참가</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta content="text/html; charset=utf-8" />

@@ -38,11 +38,9 @@ export const Container = styled.div`
 export const Problem = styled.div`
   min-width: 190px;
   min-height: 90px;
-
   margin: 10px;
   padding: 16px;
   box-sizing: border-box;
-  height: 13vh;
   background-color: ${color.background};
   border: 2px solid white;
   border-radius: 20px;
