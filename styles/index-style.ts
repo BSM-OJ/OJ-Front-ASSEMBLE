@@ -58,11 +58,15 @@ export const CompleteButton = styled.div`
   font-size: 14px;
   display: flex;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
 `;
 
 export const Content = styled.span`
   color: ${color.main};
   font-size: 16px;
   font-weight: 300;
+`;
+
+export const UserInfoContainer = styled.div`
+  width: 100%;
 `;

@@ -29,6 +29,8 @@ const Home: NextPage = () => {
     useStore();
   const [myId, setMyId] = React.useState<number>(-1);
   const [problemData, setProblemData] = React.useState<problemDataType[]>([]);
+  const [solvedProblems, setSolvedProblems] = React.useState<any>();
+
   const getUserInfo = () => {
     // 유저정보 불러오기
     let config = {
@@ -52,8 +54,8 @@ const Home: NextPage = () => {
       });
   };
 
-  const getUserSolvedProblems = () => {
-    // 유저 문제정보 불러오기
+  const getUserSolvedProblems = async () => {
+    // 유저의 문제정보 불러오기
     let config = {
       method: "get",
       url: `${GET_SOLVED_PROBLEM_URL}`,
@@ -61,9 +63,10 @@ const Home: NextPage = () => {
       withCredentials: true,
     };
 
-    axios(config)
+    await axios(config)
       .then(function (response) {
         console.log(response.data);
+        setSolvedProblems(response.data.solvedProblem);
       })
       .catch(function (error) {
         console.log(error);
@@ -94,14 +97,27 @@ const Home: NextPage = () => {
     if (isLogin) {
       setHeaderLoginText("로그인상태임");
       getAllProblems();
+      getUserSolvedProblems();
     } else {
       setHeaderLoginText("로그아웃상태임");
     }
     // eslint-disable-next-line
-  }, [isLogin]); // 넣을필요 없는데 왜넣으라고해 ㅋ
+  }, [isLogin]);
+
+  const getComplete = (solvedProblems: any, problemId: number): string => {
+    if (solvedProblems != null) {
+      for (let i = 0; i < solvedProblems?.length; i++) {
+        if (solvedProblems[i].problem_id == problemId) {
+          return "complete";
+        }
+      }
+    }
+    return "엄";
+  };
 
   return (
     <S.Container>
+      <S.UserInfoContainer></S.UserInfoContainer>
       <S.Title>문제목록</S.Title>
       <S.ProblemContainer>
         {problemData.map((data: problemDataType, idx: number) => {
@@ -114,13 +130,14 @@ const Home: NextPage = () => {
               difficulty={data.difficulty}
               key={idx}
               problemNumber={data.id.toString()}
-              complete={"complete"}
+              complete={getComplete(solvedProblems, data.id)}
               author={data.writer_id}
             />
           );
         })}
       </S.ProblemContainer>
     </S.Container>
+
   );
 };
 

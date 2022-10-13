@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 import useStore from "../../context/useStore";
 
 const Header: NextPage = () => {
-  // deleteCookie("token", { path: "/path", domain: ".yourdomain.com" });
   const {
     headerLoginText,
     setHeaderLoginText,

@@ -65,6 +65,8 @@ const Problem: NextPage = () => {
     problemsExampleType[]
   >([]);
 
+  const [loading, setLoading] = React.useState<boolean>(false);
+
   const [userInput, setuserInput] = React.useState<string>("");
 
   async function getProblemData(pid: Pid) {
@@ -78,7 +80,6 @@ const Problem: NextPage = () => {
 
     await axios(config)
       .then(function (response) {
-        console.log(response.data);
         setTitle(response.data.title);
         setContent(response.data.content);
         setMemoryLimit(response.data.memory_limit);
@@ -117,7 +118,7 @@ const Problem: NextPage = () => {
       data: data,
       withCredentials: true,
     };
-
+    setLoading(true);
     axios(config)
       .then(function (response) {
         if (
@@ -128,10 +129,12 @@ const Problem: NextPage = () => {
         } else {
           alert("컴파일 에러입니다.");
         }
+        setLoading(false);
       })
       .catch(function (error) {
         alert(error.response.data.message);
         // console.log(error);
+        setLoading(false);
       });
   };
 
@@ -201,7 +204,6 @@ ${response.data.stderr}
               name="langs"
               onChange={(selected: any) => {
                 setNowlangIdx(selected.target.value);
-                console.log(selected.target.value);
               }}
             >
               <S.lang value="0">Python</S.lang>
@@ -210,6 +212,7 @@ ${response.data.stderr}
               <S.lang value="3">Javascript</S.lang>
               <S.lang value="4">Java</S.lang>
             </S.lang_selector>
+            {loading ? <span>채점 중..</span> : <></>}
             <S.submitBtn onClick={submit}>제출</S.submitBtn>
           </S.top_content>
           <h2>
