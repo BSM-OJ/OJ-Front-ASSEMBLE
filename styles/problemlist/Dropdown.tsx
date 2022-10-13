@@ -3,6 +3,8 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useRouter } from "next/router";
+import axios from "axios";
+import { DELETE_PROBLEM } from "../../constant/url";
 
 interface Props {
   problemNumber: string;
@@ -59,6 +61,25 @@ export default function PositionedMenu(props: Props) {
           }}
         >
           채점 데이터 추가
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            let config = {
+              method: "delete",
+              url: `${DELETE_PROBLEM}/${props.problemNumber}`,
+              headers: {},
+              withCredentials: true,
+            };
+            axios(config)
+              .then(function (response) {
+                console.log(response.data);
+                alert("삭제되었습니다.");
+                router.reload();
+              })
+              .catch(function (error) {});
+          }}
+        >
+          문제 삭제하기
         </MenuItem>
       </Menu>
     </div>
