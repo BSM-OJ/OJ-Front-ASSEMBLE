@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 export const ContestHold = styled.div`
   width: 80%;
-  height: 100vh;
-  background-color: #34373c;
+    background-color: #34373c;
   color: #000;
   box-sizing: border-box;
   padding: 0 30px 0 30px;
@@ -25,7 +24,7 @@ export const Title = styled.input`
 export const Line = styled.div`
   background-color: #34373c;
   width: 100%;
-  height: 14px;
+  margin: 5px auto;
   border-bottom: 2px solid #8e8e8f;
 `;
 
@@ -55,7 +54,7 @@ export const Container = styled.div`
 export const Tcon = styled.div`
   width: 100%;
   display: flex;
-  align-content: space-between;
+
   padding-top: 20px;
 `;
 
@@ -68,9 +67,14 @@ export const SubTitle = styled.div`
 
 export const Submit = styled.button`
   display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
   background-color: #ffd144;
-  height: 35px;
-  font-size: 14px;
+  width: 500px;
+  height: 50px;
+  margin: 30px auto;
+
   line-height: 15px;
   border-radius: 10px;
   padding: 10px;
@@ -80,17 +84,20 @@ export const Submit = styled.button`
 
 export const MidCt = styled.div`
   display: flex;
+  align-items: center;
   .plus {
     display: flex;
     color: white;
     width: 14px;
-    padding-top: 15px;
-    padding-left: 12px;
+    margin: 20px 0 20px 10px;
   }
 `;
 
 export const Time = styled.input`
-  width: 30%;
+  width: 70%;
+  height: 0;
+  padding: 14px;
+  box-sizing: border-box;
   border: 1px solid white;
   background-color: #34373c;
   border-radius: 5px;
@@ -107,5 +114,7 @@ export const Ttime = styled.div`
 
 export const TimeSet = styled.div`
   display: flex;
+  justify-content: space-between;
+  flex-direction: column;
   padding-top: 10px;
 `;
