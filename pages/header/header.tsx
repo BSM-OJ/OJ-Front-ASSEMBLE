@@ -25,35 +25,6 @@ const Header: NextPage = () => {
   return (
     <>
       <div>
-        <S.Header_Wrapper>
-          <Link href="/">
-            <li>메인</li>
-          </Link>
-          <li>현재:{headerLoginText}</li>
-
-          <Link href="/signup">
-            <li>회원가입</li>
-          </Link>
-          <Link href="/contest/list">
-            <li>대회목록</li>
-          </Link>
-          <Link href="/register">
-            <li>문제등록</li>
-          </Link>
-          <Link href="/register/1">
-            <li>문제 예제등록</li>
-          </Link>
-          <Link href="/register/private/1">
-            <li>문제 찐테케등록</li>
-          </Link>
-
-          <Link href={`/problem/1`} as={`/problem/1`}>
-            <li>문제풀기</li>
-          </Link>
-        </S.Header_Wrapper>
-      </div>
-
-      <div>
         <T.HeaderBox>
           <T.Nav>
             <Link href="/hold">대회개최</Link>

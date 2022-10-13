@@ -6,8 +6,8 @@ export const HeaderBox = styled.header`
   justify-content: space-around;
   height: 3.5rem;
   align-items: center;
-  background-color: #2a2a2c;
-  @media screen and (max-width: 600px) {
+  background-color: #0F0000;
+  @media screen and (max-width: 1050px) {
     flex-direction: column;
     height: 12rem;
   }
@@ -43,7 +43,7 @@ export const Nav = styled.div`
   align-items: center;
   justify-content: space-between;
   font-size: 18px;
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1050px) {
     flex-direction: column;
     padding: 10px;
     height: 5rem;

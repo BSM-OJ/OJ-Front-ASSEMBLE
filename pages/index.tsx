@@ -64,6 +64,7 @@ const Home: NextPage = () => {
         setMemoryLimitExceeded(response.data.memory_limit_exceeded);
         setTimeLimitExceeded(response.data.time_limit_exceeded);
         setWrongAnswer(response.data.wrong_answer);
+        setSubMissions(response.data.submissions);
         console.log(isLogin);
       })
       .catch(function (error) {
@@ -135,29 +136,35 @@ const Home: NextPage = () => {
   const [userName, setUserName] = React.useState("");
 
   React.useEffect(() => {
+    //@ts-ignore
     setUserName(localStorage?.getItem("userName"));
   }, []);
   return (
     <S.Container>
-      <S.UserInfoContainer>
-        <h1 style={{ color: "white" }}>
-          {userName}
-          님의 통계
-        </h1>
-        <Chart
-          accepted={accepted}
-          compilation_error={compilation_error}
-          memory_limit_exceeded={memory_limit_exceeded}
-          submissions={subMissions}
-          time_limit_exceeded={timeLimitExceeded}
-          wrong_answer={wrong_answer}
-        />
-      </S.UserInfoContainer>
+      {isLogin ? (
+        <S.UserInfoContainer>
+          <h1>
+            {userName}
+            님의 통계
+          </h1>
+          <h3>제출 총 {subMissions}회</h3>
+          <Chart
+            accepted={accepted}
+            compilation_error={compilation_error}
+            memory_limit_exceeded={memory_limit_exceeded}
+            submissions={subMissions}
+            time_limit_exceeded={timeLimitExceeded}
+            wrong_answer={wrong_answer}
+          />
+        </S.UserInfoContainer>
+      ) : (
+        <></>
+      )}
+
       <S.Title>문제목록</S.Title>
       <S.ProblemContainer>
         {problemData.map((data: problemDataType, idx: number) => {
           console.log(problemData);
-
           return (
             <ProblemLevel
               myId={myId}

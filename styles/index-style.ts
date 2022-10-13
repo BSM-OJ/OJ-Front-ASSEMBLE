@@ -67,4 +67,5 @@ export const Content = styled.span`
 
 export const UserInfoContainer = styled.div`
   width: 100%;
+  color: white;
 `;

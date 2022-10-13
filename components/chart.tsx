@@ -40,7 +40,7 @@ const Chart = ({
           width: "500px",
           height: "500px",
           margin: "50px auto",
-          fontSize: "10px",
+          fontSize: "8px",
         }}
         data={chart_data}
         label={({ dataEntry }) => dataEntry?.title + " " + dataEntry?.value}
