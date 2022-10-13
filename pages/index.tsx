@@ -9,11 +9,9 @@ import {
   GET_ALL_PROBLEM_URL,
 } from "../constant/url";
 import useStore from "../context/useStore";
+import Chart from "../components/chart";
 
 const Home: NextPage = () => {
-
-
-
   interface problemDataType {
     id: number;
     writer_id: number;
@@ -37,6 +35,14 @@ const Home: NextPage = () => {
   const [problemData, setProblemData] = React.useState<problemDataType[]>([]);
   const [solvedProblems, setSolvedProblems] = React.useState<any>();
 
+  const [accepted, setAccepted] = React.useState<number>(0);
+  const [compilation_error, setCompilationError] = React.useState<number>(0);
+  const [memory_limit_exceeded, setMemoryLimitExceeded] =
+    React.useState<number>(0);
+  const [subMissions, setSubMissions] = React.useState<number>(0);
+  const [timeLimitExceeded, setTimeLimitExceeded] = React.useState<number>(0);
+  const [wrong_answer, setWrongAnswer] = React.useState<number>(0);
+
   const getUserInfo = () => {
     // 유저정보 불러오기
     let config = {
@@ -48,11 +54,16 @@ const Home: NextPage = () => {
 
     axios(config)
       .then(function (response) {
-        console.log(response.data);
         console.log("로그인");
+        console.log(response.data);
         setMyId(response.data.id);
         setIsLogin(true);
         localStorage.setItem("userName", response.data.nickname);
+        setAccepted(response.data.accepted);
+        setCompilationError(response.data.compilation_error);
+        setMemoryLimitExceeded(response.data.memory_limit_exceeded);
+        setTimeLimitExceeded(response.data.time_limit_exceeded);
+        setWrongAnswer(response.data.wrong_answer);
         console.log(isLogin);
       })
       .catch(function (error) {
@@ -121,10 +132,27 @@ const Home: NextPage = () => {
     }
     return "엄";
   };
+  const [userName, setUserName] = React.useState("");
 
+  React.useEffect(() => {
+    setUserName(localStorage?.getItem("userName"));
+  }, []);
   return (
     <S.Container>
-      <S.UserInfoContainer></S.UserInfoContainer>
+      <S.UserInfoContainer>
+        <h1 style={{ color: "white" }}>
+          {userName}
+          님의 통계
+        </h1>
+        <Chart
+          accepted={accepted}
+          compilation_error={compilation_error}
+          memory_limit_exceeded={memory_limit_exceeded}
+          submissions={subMissions}
+          time_limit_exceeded={timeLimitExceeded}
+          wrong_answer={wrong_answer}
+        />
+      </S.UserInfoContainer>
       <S.Title>문제목록</S.Title>
       <S.ProblemContainer>
         {problemData.map((data: problemDataType, idx: number) => {

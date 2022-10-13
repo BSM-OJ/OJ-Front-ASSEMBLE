@@ -35,7 +35,7 @@ int main() {
 
   `console.log("Hello World!")`,
 
-  `class Main {
+  `public class BOJ {
     public static void main(String[] args) {
         System.out.println("Hello World!");
   }
