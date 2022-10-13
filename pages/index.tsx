@@ -11,6 +11,9 @@ import {
 import useStore from "../context/useStore";
 
 const Home: NextPage = () => {
+
+
+
   interface problemDataType {
     id: number;
     writer_id: number;
@@ -25,8 +28,11 @@ const Home: NextPage = () => {
     isLogin,
     setIsLogin,
     setHeaderLoginText,
-  }: { isLogin: boolean; setIsLogin: any; setHeaderLoginText: any } =
-    useStore();
+  }: {
+    isLogin: boolean;
+    setIsLogin: any;
+    setHeaderLoginText: any;
+  } = useStore();
   const [myId, setMyId] = React.useState<number>(-1);
   const [problemData, setProblemData] = React.useState<problemDataType[]>([]);
   const [solvedProblems, setSolvedProblems] = React.useState<any>();
@@ -46,6 +52,7 @@ const Home: NextPage = () => {
         console.log("로그인");
         setMyId(response.data.id);
         setIsLogin(true);
+        localStorage.setItem("userName", response.data.nickname);
         console.log(isLogin);
       })
       .catch(function (error) {
@@ -137,7 +144,6 @@ const Home: NextPage = () => {
         })}
       </S.ProblemContainer>
     </S.Container>
-
   );
 };
 

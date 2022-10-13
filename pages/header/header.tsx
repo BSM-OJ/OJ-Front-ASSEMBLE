@@ -12,9 +12,14 @@ const Header: NextPage = () => {
     headerLoginText,
     setHeaderLoginText,
     isLogin,
-  }: { headerLoginText: string; setHeaderLoginText: any; isLogin: boolean } =
-    useStore();
+  }: {
+    headerLoginText: string;
+    setHeaderLoginText: any;
+    isLogin: boolean;
+  } = useStore();
 
+  if (typeof window !== "undefined") {
+  }
   const router = useRouter();
 
   return (
@@ -26,18 +31,6 @@ const Header: NextPage = () => {
           </Link>
           <li>현재:{headerLoginText}</li>
 
-          <Link href="/login">
-            <li>로그인</li>
-          </Link>
-
-          <li
-            onClick={() => {
-              deleteCookie("token");
-              router.reload();
-            }}
-          >
-            로그아웃
-          </li>
           <Link href="/signup">
             <li>회원가입</li>
           </Link>
@@ -71,11 +64,32 @@ const Header: NextPage = () => {
           <div
             style={{
               display: "flex",
+              justifyContent: "space-around",
               alignItems: "center",
               color: "#ccc",
             }}
           >
-            유나은님
+            {isLogin ? (
+              <>
+                {localStorage.getItem("userName")}님
+                <span
+                  style={{
+                    marginLeft: "10px",
+                  }}
+                  onClick={() => {
+                    localStorage.removeItem("userName");
+                    deleteCookie("token");
+                    router.reload();
+                  }}
+                >
+                  로그아웃
+                </span>
+              </>
+            ) : (
+              <Link href="/login">
+                <li>로그인</li>
+              </Link>
+            )}
           </div>
         </T.HeaderBox>
       </div>
