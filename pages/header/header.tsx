@@ -59,9 +59,8 @@ const Header: NextPage = () => {
                       .then(function (response) {})
                       .catch(function (error) {});
                     axios(config).then((response) => {
-                      console.log("로그아웃");
                       console.log(response.data);
-                      console.log("로그아웃");
+                      alert("로그아웃이 완료되었습니다");
                     });
                     router.reload();
                   }}
