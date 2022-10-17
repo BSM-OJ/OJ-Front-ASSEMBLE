@@ -6,6 +6,8 @@ import { deleteCookie } from "cookies-next";
 import { useRouter } from "next/router";
 import useStore from "../../context/useStore";
 import * as T from "./style";
+import axios from "axios";
+import { LOGOUT_URL } from "../../constant/url";
 
 const Header: NextPage = () => {
   const {
@@ -18,8 +20,6 @@ const Header: NextPage = () => {
     isLogin: boolean;
   } = useStore();
 
-  if (typeof window !== "undefined") {
-  }
   const router = useRouter();
 
   return (
@@ -49,7 +49,20 @@ const Header: NextPage = () => {
                   }}
                   onClick={() => {
                     localStorage.removeItem("userName");
-                    deleteCookie("token");
+                    const config = {
+                      method: "get",
+                      url: LOGOUT_URL,
+                      withCredentials: true,
+                      headers: {},
+                    };
+                    axios(config)
+                      .then(function (response) {})
+                      .catch(function (error) {});
+                    axios(config).then((response) => {
+                      console.log("로그아웃");
+                      console.log(response.data);
+                      console.log("로그아웃");
+                    });
                     router.reload();
                   }}
                 >
