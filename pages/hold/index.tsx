@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import * as S from "./style";
+import * as S from "../../styles/hold/style";
 //@ts-ignore
 import { HiLockOpen } from "react-icons/hi";
 //@ts-ignore

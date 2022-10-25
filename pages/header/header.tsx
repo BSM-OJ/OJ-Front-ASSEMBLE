@@ -5,7 +5,7 @@ import Link from "next/link";
 import { deleteCookie } from "cookies-next";
 import { useRouter } from "next/router";
 import useStore from "../../context/useStore";
-import * as T from "./style";
+import * as T from "../../styles/header2/style";
 import axios from "axios";
 import { LOGOUT_URL } from "../../constant/url";
 
@@ -28,7 +28,7 @@ const Header: NextPage = () => {
         <T.HeaderBox>
           <T.Nav>
             <Link href="/hold">대회개최</Link>
-            <Link href="/contest">대회목록</Link>
+            <Link href="/contest/starting">대회목록</Link>
             <Link href="/">문제목록</Link>
           </T.Nav>
           <T.Search />
