@@ -5,6 +5,9 @@ import { GET_ENDED_CONTEST } from "../../../constant/url";
 interface ContestType {
   id: number;
   name: string;
+  start_date: string;
+  end_date: string;
+  password: string;
 }
 const EndedContentList: NextPage = () => {
   const [data, setData] = React.useState<ContestType[]>();
@@ -26,7 +29,31 @@ const EndedContentList: NextPage = () => {
   return (
     <main>
       {data?.map((data, idx) => {
-        return <div key={idx}>{data.name}</div>;
+        let start_date1 = data.start_date.slice(0, 10);
+        let start_date2 = data.start_date.slice(11, 16);
+
+        let end_date1 = data.end_date.slice(0, 10);
+        let end_date2 = data.end_date.slice(11, 16);
+
+        return (
+          <div
+            key={idx}
+            style={{
+              display: "flex",
+              justifyContent: "space-around",
+              backgroundColor: "black",
+              margin: "6px",
+            }}
+          >
+            <span>{data.name}</span>
+            <span>
+              {start_date1} {start_date2}
+            </span>
+            <span>
+              {end_date1} {end_date2}
+            </span>
+          </div>
+        );
       })}
     </main>
   );

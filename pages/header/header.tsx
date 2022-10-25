@@ -55,9 +55,6 @@ const Header: NextPage = () => {
                       withCredentials: true,
                       headers: {},
                     };
-                    axios(config)
-                      .then(function (response) {})
-                      .catch(function (error) {});
                     axios(config).then((response) => {
                       console.log(response.data);
                       alert("로그아웃이 완료되었습니다");
@@ -70,7 +67,7 @@ const Header: NextPage = () => {
               </>
             ) : (
               <Link href="/login">
-                <li>로그인</li>
+                <li style={{ listStyle: "none" }}>로그인</li>
               </Link>
             )}
           </div>

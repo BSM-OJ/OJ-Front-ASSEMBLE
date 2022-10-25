@@ -1,4 +1,3 @@
-import type { NextPage } from "next";
 import * as S from "../index-style";
 import Link from "next/link";
 import Dropdown from "./Dropdown";
