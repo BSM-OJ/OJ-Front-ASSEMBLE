@@ -41,8 +41,10 @@ const EndedContentList: NextPage = () => {
             style={{
               display: "flex",
               justifyContent: "space-around",
-              backgroundColor: "black",
-              margin: "6px",
+              backgroundColor: "gray",
+              color: "black",
+              margin: "20px",
+              padding: "20px",
             }}
           >
             <span>{data.name}</span>

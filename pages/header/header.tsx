@@ -29,7 +29,8 @@ const Header: NextPage = () => {
           <T.Nav>
             <Link href="/hold">대회개최</Link>
             <Link href="/contest/starting">대회목록</Link>
-            <Link href="/">문제목록</Link>
+            <Link href="/problem/my">나의 문제</Link>
+            <Link href="/solved">내가 푼 문제</Link>
           </T.Nav>
           <T.Search />
           <div

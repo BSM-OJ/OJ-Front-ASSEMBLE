@@ -39,7 +39,7 @@ export const Search = styled.input`
 
 export const Nav = styled.div`
   display: flex;
-  width: 20%;
+  width: 30%;
   align-items: center;
   justify-content: space-between;
   font-size: 18px;
