@@ -1,6 +1,5 @@
 import React, { Dispatch, SetStateAction } from "react";
 import Code from "./Code";
-import Link from "next/link";
 import Head from "next/head";
 import type { NextPage } from "next";
 import * as S from "../../styles/problem/style";
@@ -66,7 +65,6 @@ const Problem: NextPage = () => {
   >([]);
 
   const [loading, setLoading] = React.useState<boolean>(false);
-
   const [userInput, setuserInput] = React.useState<string>("");
 
   async function getProblemData(pid: Pid) {
